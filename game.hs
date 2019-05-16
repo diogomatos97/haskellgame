@@ -298,7 +298,7 @@ kill paths locations =
                       locations,
                       "Beating on the spider's back with your fists has no\n" ++
                       "effect.")
-        "dragon" ->
+        "dragon room" ->
         
         --if player is holding a sword
            if get "sword" locations == "holding"
@@ -364,7 +364,7 @@ describe_helper :: Location -> String -> String -> LocationMap -> String
 describe_helper "start" "dead" "dead" locations = description "start2"
 --if user is at start, spider is dead, dragon is dead
 --display start 2 description
-describe_helper "spiders den" "alive" "alive" locations = description "spiders den3"
+describe_helper "spiders den" "alive" "alive" locations = description "spiders den"
 describe_helper "dragon room" "alive" "alive" locations = description "dragon2"
 describe_helper "spiders den" "dead" _ locations = description "spiders den2"
 describe_helper "spider" "dead" _ locations = description "spider2"
