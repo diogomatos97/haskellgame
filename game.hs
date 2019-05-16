@@ -263,7 +263,7 @@ fist_taken direction paths locations =
         --player takes the fist
         get "fist" locations == "holding"
         --put player dead and returns description
-            then (paths, put "myself" "dead" locations, description "spiders den3")
+            then (paths, put "myself" "dead" locations, description "dragon2")
             else go direction paths locations
             
 --when user inputs "look"
@@ -286,20 +286,18 @@ kill paths locations =
 
         "cave" -> (paths, locations,
         --if player tries to kill spider bellow it
-                   "The spider's leg is about as tough as a telephone pole.")
+                   "No effect!")
         "spider" ->
         --if player tries to kill the spider when holding a sword
             if get "sword" locations == "holding"
                 then (paths,
                       put "spider" "dead" locations,
-                      "You hack repeatedly at the spider's back.  Slimy ichor\n" ++
-                     "gushes out of the spider''s back, and gets all over you.\n" ++
-                     "I think you have killed it, despite the continued twitching.")
+                      "You hack repeatedly at the spider's back.")
                      --if player is not holding a sword
                 else (paths,
                       locations,
                       "Beating on the spider's back with your fists has no\n" ++
-                      "effect.  This is probably just as well.")
+                      "effect.")
         "dragon" ->
         
         --if player is holding a sword
@@ -367,7 +365,7 @@ describe_helper "start" "dead" "dead" locations = description "start2"
 --if user is at start, spider is dead, dragon is dead
 --display start 2 description
 describe_helper "spiders den" "alive" "alive" locations = description "spiders den3"
-describe_helper "dragon room" "alive" "alive" locations = description "spiders den3"
+describe_helper "dragon room" "alive" "alive" locations = description "dragon2"
 describe_helper "spiders den" "dead" _ locations = description "spiders den2"
 describe_helper "spider" "dead" _ locations = description "spider2"
 --if location is spider, spider is dead, display despription
@@ -406,6 +404,9 @@ description "spiders den2" =
 
 description "spiders den3" =
      "The spider sees you with the key and attacks!!!\n" ++
+     "    ...it is over in seconds...."
+description "dragon2" =
+     "The dragon sees you with the fist and burns you!!!\n" ++
      "    ...it is over in seconds...."
 
 description "spider" =
